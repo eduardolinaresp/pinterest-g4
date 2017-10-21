@@ -1,6 +1,8 @@
 <h1>Pins</h1>
 
-<%= link_to 'New Pin', new_pin_path, class: 'btn btn-warning' %>
+<% if user_signed_in? %>
+  <%= link_to 'New Pin', new_pin_path, class: 'btn btn-warning' %>
+<% end %>
 <br>
 <br>
 <div class="row">
