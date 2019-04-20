@@ -22,6 +22,7 @@
 * How to run the test suite
 
     TODO..
+    docker exec -i -t pinterest-g4_web_1 bash
 
 * Services (job queues, cache servers, search engines, etc.)
 
