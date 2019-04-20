@@ -6,7 +6,7 @@
 * System dependencies
 
     gem 'devise' ,  gem 'cancancan'
-    
+
 * Configuration
     
     docker-compose build
@@ -36,5 +36,5 @@
     heroku addons:create heroku-postgresql:hobby-dev
     heroku run rails db:create
     heroku run rails db:migrate
-
+    
 
