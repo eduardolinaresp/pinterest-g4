@@ -13,11 +13,11 @@
 
 * Database creation
     
-    docker-compose run --rm web rails db:create
+    docker-compose run --rm app rails db:create
    
 * Database initialization
 
-    docker-compose run --rm web rails db:migrate
+    docker-compose run --rm app rails db:migrate
 
 * How to run the test suite
 
@@ -34,8 +34,25 @@
 
 ### Deployment to Heroku
 
+   	heroku create
+	
+	git push heroku master
+
     heroku addons:create heroku-postgresql:hobby-dev
+
+    heroku config:set DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+
     heroku run rails db:create
+
     heroku run rails db:migrate
+
+    heroku pg:psql
+    
+    heroku open
+
+    heroku logs --tail
+
+    heroku run bash
+
     
 

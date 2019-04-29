@@ -21,6 +21,13 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+staging:
+  <<: *default
+  database: myapp_staging
+  host: db
+  username: postgres
+  password:
+
 development:
   <<: *default
   database: myapp_development
