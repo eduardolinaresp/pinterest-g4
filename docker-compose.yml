@@ -1,17 +1,35 @@
 version: '3'
 services:
   db:
-    image: postgres
+    build: ./postgres
     volumes:
       - /var/lib/postgresql/data
     ports:
-      - "5432:5432"
-  web:
-    build: .
+      - "${POSTGRES_PORT}:5432"
+  #  environment:
+  #    - POSTGRES_DB=${POSTGRES_DB}
+  #    - POSTGRES_USER=${POSTGRES_USER}
+  #    - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  #    - 
+
+  app:
+    build: ./app
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/myapp
+      -  /myapp
     ports:
       - "3000:3000"
+    environment:
+      - RAILS_ENV=${RAILS_ENV}  
+ #    - DATABASE_URL=${DATABASE_URL}  
     depends_on:
       - db
+  ngx:
+    build: ./nginx
+   # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+   # volumes:
+   #   - ./app:/myapp
+    ports:
+      - "80:80"
+
+      
